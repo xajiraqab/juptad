@@ -11,6 +11,12 @@ async function getMovieFromUrl(url) {
 		const page = await browser.newPage();
 		await page.goto(url);
 
+		const cookies = [{
+			'name': 'age-confirmed',
+			'value': '1996-02-12'
+		}];
+		
+		await page.setCookie(...cookies);
 
 		await page.waitForSelector('.vjs-tech', { visible: true }).then(async () => {
 
