@@ -1,0 +1,143 @@
+* {
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: .5px;
+  word-spacing: 4px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.87);
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+* {
+  outline: none;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('/fonts/Roboto-Medium.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #121314;
+}
+
+p {
+  color: rgba(255, 255, 255, 0.67);
+}
+
+main {
+  margin: auto;
+  width: 1200px;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 0em 10px 1em 10px;
+}
+
+section {
+  display: flex;
+  gap: 2em;
+  padding: 1em 0;
+  margin-top: 2em;
+}
+
+section img {
+  object-fit: cover;
+}
+
+section h1 {
+  margin-top: 0;
+}
+
+input {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: none;
+  border-radius: .5em;
+  padding: 1em 2em;
+  flex: 100%;
+  font-size: 1rem;
+}
+
+input:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+  outline: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+button {
+  border: none;
+  background: linear-gradient(#4D61FF, #05B9FF);
+  padding: 1em;
+  border-radius: 999px;
+  font-size: 1rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  gap: 1em;
+}
+
+.flex h2 {
+  margin: 0;
+  padding: none;
+}
+
+.flex img {
+  align-self: start;
+}
+
+
+.floating {
+  position: fixed;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity ease-in-out 1500ms, top ease-in-out 1500ms;
+  background: transparent;
+  gap: 1em;
+  display: flex;
+  align-items: center;
+  transform-origin: left center;
+  z-index: 2;
+  animation: anFadeIn ease 350ms;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 1em;
+  border-radius: 1em;
+}
+
+.floating img {
+  width: 64px;
+  transform-origin: left center;
+  animation: anBeating linear 2000ms infinite;
+}
+
+.floating h3 {
+  max-width: 8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 1em;
+  padding-left: 10px;
+  border-radius: 1em;
+}
+
+@keyframes anFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    display: grid;
+  }
+}

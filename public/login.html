@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <meta name="description" content="watch movies juptad">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    form {
+      width: min(100%, 500px);
+      padding: 15px;
+      margin: auto;
+      margin-top: 10em;
+    }
+
+    form > * {
+      display: block;
+      width: 100%;
+    }
+
+    form button {
+      margin: auto;
+      margin-top: 2em;
+      width: 200px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      form {
+        margin-top: 2em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <form>
+    <h1>Welcome To Juptad</h1>
+    <input placeholder="Enter Your Name" required autofocus />
+    <button>login</button>
+  </form>
+
+  <script src="/js/cookies.js"></script>
+  <script src="/js/toast.js"></script>
+  <script>
+
+    const body = document.querySelector('body')
+
+    //თუ სახელი შენახულია, შემოწმება სწორია თუარა
+    let username = cookies.getItem('username')
+
+    if (username) {
+
+      fetch('/checkuser', {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ username })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === -1) {
+            cookies.setItem('username', username)
+          }
+          else {
+            window.location.href = '/rooms'
+          }
+        })
+    }
+    else {
+      cookies.removeItem('username')
+    }
+
+    const txtName = document.querySelector("input")
+    document.querySelector("form").addEventListener("submit", e => {
+      e.preventDefault()
+
+      const username = txtName.value
+
+      fetch('/login', {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ username })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === -1) {
+            toast("🔴 " + data.message)
+            return
+          }
+          cookies.setItem('username', username)
+          window.location.reload()
+        });
+    })
+  </script>
+
+</body>
+
+</html>

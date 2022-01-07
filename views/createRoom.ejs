@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Room</title>
+  <meta name="description" content="Create Room">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/room.css" />
+</head>
+
+<body>
+  <modal id="dlgChangeMovie" style="display: block;">
+    <form>
+      <h1>Add Movie<span class="loading"></span></h1>
+      <input id="txtMovieUrl" autofocus placeholder="URL From Adjaranet.ge Or Imovies.cc" />
+    </form>
+  </modal>
+
+  <script>
+    const txtMovieUrl = document.querySelector("#txtMovieUrl")
+    const loading = document.querySelector(".loading")
+    let bIsLoading = false
+
+    document.querySelector("form").addEventListener("submit", e => {
+      e.preventDefault()
+
+      if (bIsLoading) return
+
+      bIsLoading = true 
+      loading.style.visibility = "visible"
+
+      fetch('/createRoom', {
+
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ url: txtMovieUrl.value })
+
+      }).then(response => response.json())
+        .then(data => {
+          if (data.status === 1) {
+            window.location.reload()
+            return
+          }
+          else {
+            loading.style.visibility = "hidden"
+            bIsLoading = false
+            alert(data.message)
+          }
+        })
+    })
+  </script>
+</body>
+
+</html>

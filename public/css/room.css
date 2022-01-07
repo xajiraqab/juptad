@@ -1,0 +1,188 @@
+body {
+  overflow-x: hidden;
+}
+
+.videoContainer {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  margin: auto;
+  margin: 0;
+  margin-left: auto;
+  transition: opacity ease 450ms;
+  opacity: 0;
+}
+
+.videoCover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  text-transform: capitalize;
+}
+
+#poster {
+  visibility: hidden;
+  display: block;
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  margin-top: 3em;
+}
+
+main {
+  opacity: 0;
+  transition: opacity ease 450ms;
+}
+
+modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+modal div, modal form {
+  position: relative;
+  background: #121416;
+  padding: 1em 3em 3em;
+  border-radius: 1em;
+  width: 500px;
+  max-width: calc(100% - 20px);
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+modal form {
+  display: grid;
+}
+
+modal button {
+  font-size: 1.5rem;
+  display: block;
+  display: grid;
+  place-items: center;
+  padding: 1em;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 2em;
+  text-transform: capitalize;
+  border-radius: 56px 26px 56px 56px;
+}
+
+#dlgJoin h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#btnChangeMovie {
+  min-width: 185px;
+  font-weight: 600;
+}
+
+#btnFullscreen {
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#dlgChangeMovie {
+  display: none;
+  transition: opacity ease 450ms;
+  opacity: 0;
+}
+
+.loading {
+  height: 30px;
+  width: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top: 4px solid #2D88FF;
+  animation: anLoading linear 1500ms infinite;
+  float: right;
+  visibility: hidden;
+}
+
+#floatingsContainer {
+  opacity: 0;
+}
+
+.emojis {
+  flex-wrap: wrap;
+}
+
+.emojis.disabled {
+  pointer-events: none;
+  filter: brightness(0.5);
+}
+
+.emojis img {
+  object-fit: contain;
+}
+
+.emojis button {
+  padding: 0;
+  background: none;
+  margin: 0;
+  transition: transform ease 150ms;
+}
+
+.emojis button:active {
+  transform: scale(0.86)
+}
+
+
+progress {
+  flex: 1;
+}
+
+@keyframes anBeating {
+  0% {
+    transform: scale(.86);
+
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(.86);
+
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .videoContainer {
+    height: 50vh;
+  }
+
+  html {
+    font-size: 12px;
+  }
+
+  #btnChangeMovie {
+    display: block;
+    margin: auto;
+  }
+
+  #title {
+    text-align: center;
+  }
+}

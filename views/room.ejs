@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= roomName %> - <%= movieTitle %>
+  </title>
+  <meta name="description" content="Watch Moive Juptad">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/room.css" />
+</head>
+
+<body>
+
+  <div id="floatingEmojisContainer"></div>
+  <div class="videoContainer">
+    <video width="100%" height="100%" controls controlslist="nofullscreen" src=""></video>
+    <!-- <div class="videoCover">
+      <div class="floating" style="position: absolute">
+        <h3>jaax paused video</h3>
+        <img src="/images/emojis/confused.png"/>
+      </div>
+    </div> -->
+  </div>
+
+  <button id="btnFullscreen">fullscreen</button>
+ 
+  <main>
+    <div class="flex emojis">
+      <% for (const value of listEmojis) { %>
+        <button><img width="64px" height="64px" src="/images/emojis/<%= value %>" alt="emoji" /></button>
+        <% } %>
+    </div>
+
+
+    <div class="flex">
+      <img alt="users" width="40px" height="40px" src="/images/user.png" />
+      <div id="users"></div>
+    </div>
+
+    <section>
+      <img alt="poster" id="poster" width="185px" height="276px" src="" />
+      <div>
+        <h1 id="title"></h1>
+        <p id="description"></p>
+      </div>
+    </section>
+
+    <button id="btnChangeMovie">change movie</button>
+  </main>
+
+
+  <!-- ოთახში შესვლა -->
+  <modal id="dlgJoin">
+    <div>
+      <h1>Hi <%= username %>
+      </h1>
+      <p>„<%= movieTitle %>“?</p>
+      <button id="btnJoin"><img alt="join q" width="64px" height="64px" src="/images/play-button.png" /></button>
+    </div>
+  </modal>
+
+
+  <!-- ფილმის შეცვლა -->
+  <modal id="dlgChangeMovie">
+    <form>
+      <h1>Change Movie<span class="loading"></span></h1>
+      <input id="txtMovieUrl" autofocus placeholder="URL From Adjaranet.ge Or Imovies.cc" />
+    </form>
+  </modal>
+
+
+  <script>
+    const roomName = '<%= roomName %>'
+    const user = { username: '<%= username %>' }
+  </script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/room.js"></script>
+
+</body>
+
+</html>

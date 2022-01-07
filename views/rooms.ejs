@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooms</title>
+  <meta name="description" content="Join and Watch Juptad">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/rooms.css" />
+</head>
+
+<body>
+  <main>
+
+    <h1>Welcome <%- username %></h1>
+
+    <div class="rooms">
+    <% for (const [key, value] of Object.entries(listRooms)) { %>
+        <a class="room" href="/<%= key %>">
+          <span><%= key %> - <% if (value.movie){ %><%- value.movie.title %><% } else{ %><span class="green">available</span><% } %></span>
+          <% if (value.movie){ %><button><img alt="icon" src="/images/play-button.png" /></button><% } else{ %><div></div><% } %>
+        </a>
+    <% } %>
+    </div>
+  </main>
+</body>
+</html>

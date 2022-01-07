@@ -1,0 +1,43 @@
+.rooms {
+  display: grid;
+  gap: 1em;
+}
+
+.room {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  text-transform: capitalize;
+  background: #181920;
+  border-radius: 1em;
+  padding: 2em;
+}
+
+.room button, .room div {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 28px 12px 28px 28px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.room button img {
+  width: 36px;
+}
+
+.room:hover, .room:hover span {
+  color: #0CB0FF;
+}
+
+.green {
+  color: #0cff69;
+}
+
+button.nobg {
+  background: none;
+  border-radius: 50%;
+}
