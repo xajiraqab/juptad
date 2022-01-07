@@ -19,6 +19,7 @@
     </form>
   </modal>
 
+  <script src="/js/toast.js"></script>
   <script>
     const txtMovieUrl = document.querySelector("#txtMovieUrl")
     const loading = document.querySelector(".loading")
@@ -49,7 +50,7 @@
           else {
             loading.style.visibility = "hidden"
             bIsLoading = false
-            alert(data.message)
+            toast("🔴 " + data.message)
           }
         })
     })

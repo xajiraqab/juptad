@@ -31,7 +31,6 @@ async function getMovieFromUrl(url) {
 		});
 	}
 	catch (error) {
-		console.log(error)
 		movie = { error: "not found" }
 	}
 

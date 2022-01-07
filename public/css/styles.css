@@ -102,12 +102,13 @@ button {
   display: flex;
   align-items: center;
   transform-origin: left center;
-  z-index: 2;
+  z-index: 5;
   animation: anFadeIn ease 350ms;
   pointer-events: none;
   background: rgba(0, 0, 0, 0.5);
   padding: 0 1em;
   border-radius: 1em;
+  text-transform: capitalize;
 }
 
 .floating img {
