@@ -44,15 +44,7 @@ let _rooms = {
     currentTime: 0.0,
   },
 
-  'j3': {
-    movie: {
-      src: "https://api.adjaranet.com/api/v1/movies/878462787/files/1319383?source=adjaranet",
-      title: "ძველი გვარდია",
-      description: "დაქირავებული მეომრების ფარულ ჯგუფს, რომელსაც მებრძოლი სახელად ენდი (შარლიზ ტერონი) მეთაურობს, ამოუცნობი უნარი აქვს - ისინი არ კვდებიან). ისინი საუკუნეების მანძილზე იბრძვიან, რათა მოკდავთა სამყარო დაიცვან. როდესაც ამ გუნდს სასწრაფო მისიის შესასრულებლად დაიქირავებენ და მათი უჩვეულო უნარები გამოაშკარავდება, ენდის და ნაილს (მათ რიგებში სულ ახადაგაწევრაინებულ მებრძოლს) მოუწევთ დაეხმარონ გუნდს და ნებისმიერი ხერხით აღმოფხვრან საფრთხე, რაც იმათგან მოდის, ვისაც მათი ძალის მიბაძვა განუზრახავთ.",
-      image: "https://static.adjaranet.com/movies/posters/240/787/878462787-b96b2648db1908ba8cb23ac419222c97.jpg",
-
-    }, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0,
-  },
+  'j3': {movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0,},
   'j4': { movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0, },
   'j5': { movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0, },
 }
