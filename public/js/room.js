@@ -139,6 +139,7 @@ ui.btnJoin.addEventListener("click", () => {
   ui.cMain.style.opacity = 1
   ui.cVideo.style.opacity = 1
   ui.cFlotingEmojis.style.opacity = 1
+  ui.btnFullscreen.style.opacity = 1
   ui.cModalJoin.style.display = 'none'
   window.scrollTo(0, 0);
 
