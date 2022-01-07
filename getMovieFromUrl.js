@@ -7,7 +7,7 @@ async function getMovieFromUrl(url) {
 	let movie;
 
 	try {
-		const browser = await puppeteer.launch({ headless: true });
+		const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
 		const page = await browser.newPage();
 		await page.goto(url);
 
@@ -15,7 +15,7 @@ async function getMovieFromUrl(url) {
 			'name': 'age-confirmed',
 			'value': '1996-02-12'
 		}];
-		
+
 		await page.setCookie(...cookies);
 
 		await page.waitForSelector('.vjs-tech', { visible: true }).then(async () => {
