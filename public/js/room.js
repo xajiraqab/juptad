@@ -5,6 +5,7 @@ const ui = {
   btnJoin: document.querySelector("#btnJoin"),
   btnChangeMovie: document.querySelector("#btnChangeMovie"),
   btnFullscreen: document.querySelector("#btnFullscreen"),
+  btnFillscreen: document.querySelector("#btnFillscreen"),
   txtMovieUrl: document.querySelector("#txtMovieUrl"),
   video: document.querySelector("video"),
   cUsers: document.querySelector("#users"),
@@ -14,6 +15,7 @@ const ui = {
   cModalChangeMovie: document.querySelector("#dlgChangeMovie"),
   cFormChangeMovie: document.querySelector("#dlgChangeMovie form"),
   cEmojis: document.querySelector(".emojis"),
+  cNav: document.querySelector("nav"),
   cFlotingEmojis: document.querySelector("#floatingEmojisContainer"),
   formChangeMovie: document.querySelector("form"),
   loading: document.querySelector(".loading"),
@@ -37,6 +39,7 @@ const ui = {
     ui.cModalChangeMovie.style.opacity = 0
     ui.cModalChangeMovie.style.display = "block"
     ui.btnFullscreen.style.opacity = 0
+    ui.cNav.style.opacity = 0
     setTimeout(() => ui.cModalChangeMovie.style.opacity = 1, 10);
     ui.txtMovieUrl.focus()
   },
@@ -48,6 +51,7 @@ const ui = {
     ui.cFlotingEmojis.style.opacity = 1
     ui.cModalChangeMovie.style.opacity = 0
     ui.btnFullscreen.style.opacity = 1
+    ui.cNav.style.opacity = 1
     setTimeout(() => { ui.cModalChangeMovie.style.display = "none"; ui.txtMovieUrl.value = "" }, 450);
   },
 
@@ -140,6 +144,7 @@ ui.btnJoin.addEventListener("click", () => {
   ui.cVideo.style.opacity = 1
   ui.cFlotingEmojis.style.opacity = 1
   ui.btnFullscreen.style.opacity = 1
+  ui.cNav.style.opacity = 1
   ui.cModalJoin.style.display = 'none'
   window.scrollTo(0, 0);
 
@@ -301,19 +306,28 @@ ui.btnChangeMovie.addEventListener("click", () => ui.funShowModalChangeMovie())
 //მთელ ეკრანზე გაშლა/დახურვა
 let bIsFullscreen = false
 ui.btnFullscreen.addEventListener("click", e => {
+ 
+ 
+  bIsFullscreen = !bIsFullscreen || !document.fullscreenElement
+  if (!bIsFullscreen && !document.fullscreenElement) bIsFullscreen = false
 
-  bIsFullscreen = !bIsFullscreen
 
   if (bIsFullscreen) {
     document.body.requestFullscreen()
     screen.orientation.lock('landscape').catch(() => { })
+    ui.cVideo.classList.add('fillscreen')
   }
-  else {
+  else if (document.fullscreenElement) {
     document.exitFullscreen()
     screen.orientation.unlock()
+    ui.cVideo.classList.remove('fillscreen')
   }
+})
 
-  ui.btnFullscreen.innerText = bIsFullscreen ? "Exit Fullscreen" : "Fullscreen"
+
+//ეკრანის შევსება
+ui.btnFillscreen.addEventListener("click", () => {
+  ui.cVideo.classList.toggle('fillscreen')
 })
 
 

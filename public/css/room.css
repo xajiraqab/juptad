@@ -2,17 +2,132 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  min-height: 0;
+}
+
+nav {
+  transition: opacity ease 450ms;
+  opacity: 0;
+}
+
 .videoContainer {
   position: relative;
   overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+  height: 500px;
+  width: 100%;
   background: #000;
   margin: auto;
   margin: 0;
   margin-left: auto;
   transition: opacity ease 450ms;
   opacity: 0;
+  border-radius: 10px;
+  max-width: calc(1200px - 20px);
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+.videoContainer.fillscreen {
+  max-width: calc(100vw - 20px);
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 0;
+}
+
+.videoNonBlockCover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.01);
+}
+
+
+#btnToggleEmojis:not(:checked)~.videoNonBlockCover {
+  display: none;
+}
+
+
+.btnOpenEmojis {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  border-radius: 0;
+  padding: 10px;
+  margin: 0;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+#btnToggleEmojis {
+  visibility: hidden;
+}
+
+#btnToggleEmojis:not(:checked)~.emojis {
+
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.emojis {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: auto;
+  overflow-x: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 1em;
+  background: linear-gradient(-90deg, black, transparent);
+  opacity: 1;
+  transition: opacity ease 250ms, transform ease 250ms;
+  transform-origin: top right;
+}
+
+.emojis::-webkit-scrollbar {
+  width: 5px;
+}
+
+.emojis::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.emojis::-webkit-scrollbar-thumb {
+  background: #C32325;
+}
+
+.emojis::-webkit-scrollbar-thumb:hover {
+  background: darkslateblue;
+}
+
+.emojis.disabled {
+  pointer-events: none;
+  filter: brightness(0.5);
+}
+
+.emojis img {
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.emojis button {
+  padding: 0;
+  background: none;
+  margin: 0;
+  transition: transform ease 150ms;
+}
+
+.emojis button:active {
+  transform: scale(0.86)
 }
 
 .videoCover {
@@ -30,7 +145,7 @@ body {
 #poster {
   visibility: hidden;
   display: block;
-  margin-top: 12px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -90,15 +205,29 @@ modal button {
 }
 
 #btnChangeMovie {
-  min-width: 185px;
-  font-weight: 600;
+  margin-left: auto;
+  cursor: pointer;
+  background: #181920;
+  padding: 1em;
+  display: inline-flex;
+  gap: 1ch;
+  text-transform: capitalize;
+  justify-content: center;
+  border-radius: 999px;
 }
 
 #btnFullscreen {
-  float: right;
-  margin-right: 10px;
-  margin-top: 10px;
   opacity: 0;
+}
+
+
+button.flat {
+  background: #181920;
+  padding: 1em;
+  display: inline-flex;
+  gap: 1ch;
+  text-transform: capitalize;
+  margin-top: 10px;
 }
 
 #dlgChangeMovie {
@@ -124,40 +253,23 @@ modal button {
   opacity: 0;
 }
 
-.emojis {
-  flex-wrap: wrap;
-}
-
-.emojis.disabled {
-  pointer-events: none;
-  filter: brightness(0.5);
-}
-
-.emojis img {
-  object-fit: contain;
-}
-
-.emojis button {
-  padding: 0;
-  background: none;
-  margin: 0;
-  transition: transform ease 150ms;
-}
-
-.emojis button:active {
-  transform: scale(0.86)
-}
-
-
 progress {
   flex: 1;
+}
+
+.flexJustifyBetween {
+  margin-top: 10px;
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
 }
 
 @keyframes anLoading {
   from {
     transform: rotate(0deg);
   }
-  to  {
+
+  to {
     transform: rotate(360deg);
   }
 }
@@ -187,12 +299,11 @@ progress {
     font-size: 12px;
   }
 
-  #btnChangeMovie {
-    display: block;
-    margin: auto;
-  }
-
   #title {
     text-align: center;
+  }
+
+  .emojis {
+    grid-template-columns: 1fr;
   }
 }
