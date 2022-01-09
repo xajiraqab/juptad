@@ -140,12 +140,6 @@ const setMovie = (movie) => {
 //ოთახში შესვლა
 ui.btnJoin.addEventListener("click", () => {
 
-  ui.cMain.style.opacity = 1
-  ui.cVideo.style.opacity = 1
-  ui.cFlotingEmojis.style.opacity = 1
-  ui.btnFullscreen.style.opacity = 1
-  ui.cNav.style.opacity = 1
-  ui.cModalJoin.style.display = 'none'
   window.scrollTo(0, 0);
 
   //დაკავშირება და ინფოს წამოღება
@@ -156,6 +150,14 @@ ui.btnJoin.addEventListener("click", () => {
 
     socket.on("sync", (data) => {
       setMovie(data.movie)
+
+      ui.cMain.style.opacity = 1
+      ui.cVideo.style.opacity = 1
+      ui.cFlotingEmojis.style.opacity = 1
+      ui.btnFullscreen.style.opacity = 1
+      ui.cNav.style.opacity = 1
+      ui.cModalJoin.style.display = 'none'
+
       listUsers = data.listUsers.map(name => ({ username: name, divEmoji: null, timerEmoji: null }))
 
       bIsProvider = data.providerUser === user.username
@@ -306,8 +308,8 @@ ui.btnChangeMovie.addEventListener("click", () => ui.funShowModalChangeMovie())
 //მთელ ეკრანზე გაშლა/დახურვა
 let bIsFullscreen = false
 ui.btnFullscreen.addEventListener("click", e => {
- 
- 
+
+
   bIsFullscreen = !bIsFullscreen || !document.fullscreenElement
   if (!bIsFullscreen && !document.fullscreenElement) bIsFullscreen = false
 
