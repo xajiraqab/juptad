@@ -126,7 +126,6 @@ const updateUsers = () => {
 //ფილმის ინფოს ჩვენება
 const setMovie = (movie) => {
   if (!movie) {
-    ui.imgMoviePoster.style.visibility = 'hidden'
     return
   }
   ui.imgMoviePoster.style.visibility = 'visible'
