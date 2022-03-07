@@ -1,0 +1,20 @@
+{
+  "name": "Juptad",
+  "version": "1.0.0",
+  "description": "watch movies together",
+  "manifest_version": 3,
+  "author": "jax",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_title": "juptad title",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "logo_64.png",
+    "48": "logo_64.png",
+    "128": "logo_64.png"
+  }
+}
