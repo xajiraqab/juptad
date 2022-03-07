@@ -19,7 +19,10 @@
     <div class="rooms">
     <% for (const [key, value] of Object.entries(listRooms)) { %>
         <a class="room" href="/<%= key %>">
-          <span><%= key %> - <% if (value.movie){ %><%- value.movie.title %><% } else{ %><span class="green">available</span><% } %></span>
+          <span class="movieInfo">
+            <img src="<%- value.movie.image %>" alt="movie poster" width="90px"  />
+            <h2><% if (value.movie){ %><%- value.movie.title %><% } else{ %><span class="green">available</span><% } %></h2>
+          </span>
           <% if (value.movie){ %><button><img alt="icon" src="/images/play-button.png" /></button><% } else{ %><div></div><% } %>
         </a>
     <% } %>

@@ -11,7 +11,13 @@
   text-transform: capitalize;
   background: #181920;
   border-radius: 1em;
-  padding: 2em;
+  padding: 1em;
+}
+
+.room > .movieInfo {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
 .room button, .room div {
@@ -29,7 +35,7 @@
   width: 36px;
 }
 
-.room:hover, .room:hover span {
+.room:hover, .room:hover h2 {
   color: #0CB0FF;
 }
 

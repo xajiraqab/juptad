@@ -96,6 +96,27 @@ app.post('/createRoom', requireLogin, async (req, res) => {
   res.send({ status: 1 })
 })
 
+
+//ოთახის შექმნა ექსთენშენიდან
+app.post('/createRoomFE', (req, res) => {
+
+  const movie = req.body.movieInfo
+
+  const newRoomName = `j${Object.keys(_rooms).length + 1}`
+  _rooms[newRoomName] = {
+    movie: movie,
+    listUsers: [],
+    providerUser: null,
+    isPlaying: false,
+    currentTime: 0.0
+  }
+
+
+  res.send({ status: 1, url: `https://juptad.herokuapp.com/${newRoomName}` })
+})
+
+
+
 //ოთახის დაბრუნება
 app.get('/:roomName', requireLogin, (req, res) => {
   const roomName = req.params.roomName

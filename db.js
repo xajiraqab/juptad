@@ -44,9 +44,9 @@ let _rooms = {
     currentTime: 0.0,
   },
 
-  'j3': {movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0,},
-  'j4': { movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0, },
-  'j5': { movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0, },
+  // 'j3': {movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0,},
+  // 'j4': { movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0, },
+  // 'j5': { movie: null, listUsers: [], providerUser: null, isPlaying: false, currentTime: 0.0, },
 }
 
 
